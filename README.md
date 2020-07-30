@@ -1,15 +1,22 @@
-### Create React App with Parcel
+### RSS Feeder
 
-Very simple template based on Parcel for beggining develope React apps!
+RSS Feeder App allows **read RSS Feeds, Import/Export Channels,
+Add/Delete channels, Share through Telegram** favorite news feeds.
 
-#### Installation
+All data saved on client side (in Browser localStorage), so if needed
+to share channels list - simply export it and send this txt file to another
+devices.
+
+Based on React, Bootstrap, React Bootstrap etc.
+
+Run dev environment
 
 ```
-
-$ git clone https://github.com/KiazimKhutaba/create-react-app.git
-
-$ cd create-react-app && yarn
 
 $ yarn dev
 
 ```
+
+Working app
+
+https://rssfeeder2020.herokuapp.com/
