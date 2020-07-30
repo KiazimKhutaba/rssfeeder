@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "rm -rf ./.cache && rm -rf ./dist && npx parcel src/index.html",
     "prod": "rm -rf ./.cache && rm -rf ./dist && npx parcel build src/index.html --out-dir D:\\MyDevelopingApps\\Php\\php-get-remote-url-http-headers --no-source-maps",
-    "build": "rm -rf ./.cache && rm -rf ./public npx parcel build src/index.html --out-dir public",
+    "build": "rm -rf ./.cache && rm -rf ./public && npx parcel build src/index.html --out-dir public",
     "analyze": "source-map-explorer public/main.*"
   },
   "dependencies": {
