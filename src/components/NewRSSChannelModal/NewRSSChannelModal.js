@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import LocalStorageDB from '../../utils/LocalStorageDB';
-import RSSChannelsCatalog from '../../utils/RSSChannelsCatalog';
 import RSSParser from 'rss-parser/lib/parser';
 import AppConfig from '../../config/config';
 import '../../utils/extenstions'
 
 
-const NewRSSChannelModal = ({ modalVisible, visibilityHandler, onChannelAdded }) => {
+const NewRSSChannelModal = ({ modalVisible, visibilityHandler, rssCatalog, onChannelAdded }) => {
 
     const [show, setShow] = useState(false);
     const [feedTitle, setFeedTitle] = useState('');
@@ -17,9 +15,6 @@ const NewRSSChannelModal = ({ modalVisible, visibilityHandler, onChannelAdded })
     const [feedTitleIsLoading, setFeedTitleIsLoading] = useState(false);
 
     const handleClose = () => visibilityHandler(false);
-
-    const db = new LocalStorageDB(AppConfig.appName);
-    const rssCatalog = new RSSChannelsCatalog(db);
 
 
     const fetchFeedTitle = (channelUrl, callbackOk, callbackError) => {
@@ -36,6 +31,7 @@ const NewRSSChannelModal = ({ modalVisible, visibilityHandler, onChannelAdded })
 
 
     const preloadFeedTitle = (e) => {
+        // Todo: direct access to DOM element - should be changed to ref
         let url = document.querySelector('#ChannelURL').value.trim();
         
         setFeedTitleIsLoading(true);
@@ -66,8 +62,15 @@ const NewRSSChannelModal = ({ modalVisible, visibilityHandler, onChannelAdded })
     const newChannelSave = (e) => {
 
         let channel = {
+            // Todo: direct access to DOM element - should be changed to ref
             title: document.querySelector('#ChannelName').value.trim(),
             url: document.querySelector('#ChannelURL').value.trim()
+        }
+
+        if( !channel.title || !channel.url ) {
+            // Todo: change to error in state without alert
+            alert('Channels data can\'t be empty!');
+            return;
         }
 
 

@@ -3,6 +3,8 @@ class LocalStorageDB
 {
 
     constructor(dbPrefix) {
+
+        //console.warn('LocalStorageDb object created');
         this.dbPrefix = dbPrefix + '@';
     }
 
@@ -15,12 +17,6 @@ class LocalStorageDB
      */
     save(key, value) {
 
-        // let obj = {
-        //     type: typeof value,
-        //     value: {}
-        // }
-
-        // obj.value = value;
         let _value = JSON.stringify(value);
 
         localStorage.setItem(this.dbPrefix + key, _value);
@@ -32,7 +28,6 @@ class LocalStorageDB
     /**
      * Select data from localStorage
      *
-     * @throws {Error} when value not found
      *
      * @param {string} key object key id
      *

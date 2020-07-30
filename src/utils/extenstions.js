@@ -12,3 +12,21 @@ Object.defineProperty(String.prototype, 'hashCode', {
         return hash;
     }
 });
+
+
+// Based on https://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
+if (!String.prototype.format)
+{
+    Object.defineProperty(String.prototype, 'format', {
+        value: function () {
+
+            let args = arguments;
+
+            const matchFunc = (match, number) => (
+                typeof args[number] != 'undefined' ? args[number] : match
+            )
+
+            return this.replace(/{(\d+)}/g, matchFunc)
+        }
+    })
+}

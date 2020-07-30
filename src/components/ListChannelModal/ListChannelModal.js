@@ -15,7 +15,7 @@ const ListChannelModal = ({ modalVisible, visibilityHandler, onChannelRemoved, o
     const [ channelRemoved, setChannelRemoved ] = useState(false);
     const [ channelsAdded, setChannelsAdded ] = useState(false);
     
-    const db = new LocalStorageDB(AppConfig.appName);
+    const db = new LocalStorageDB(AppConfig.AppName);
     const channelsDB = new RSSChannelsCatalog(db);
 
 
@@ -132,7 +132,8 @@ const ListChannelModal = ({ modalVisible, visibilityHandler, onChannelRemoved, o
                                 </tr>
                             </thead>
                             <tbody>
-                                {   !isEmpty(channels) && 
+                                {   !isEmpty(channels) &&
+
                                     channels.map((item, index) => (
                                     <tr key={'lsm_' + index}>
                                         <td>{++index}</td>
@@ -159,7 +160,12 @@ const ListChannelModal = ({ modalVisible, visibilityHandler, onChannelRemoved, o
                             Отмена
                         </Button>
 
-                        <label htmlFor="rss-feeds-export" className="btn btn-md btn-success">Импорт RSS</label>
+                        <label
+                            htmlFor="rss-feeds-export"
+                            className="btn btn-md btn-success"
+                        >
+                            Импорт RSS
+                        </label>
                         <input 
                             type="file" 
                             id="rss-feeds-export" 

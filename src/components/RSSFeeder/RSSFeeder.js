@@ -7,9 +7,6 @@ import RSSFeedCard from '../RSSFeedCard/RSSFeedCard';
 import NewRSSChannelModal from '../NewRSSChannelModal/NewRSSChannelModal';
 import ListChannelModal from '../ListChannelModal/ListChannelModal';
 
-import LocalStorageDB from '../../utils/LocalStorageDB';
-import RSSChannelsCatalog from "../../utils/RSSChannelsCatalog";
-
 import { isEmpty } from '../../utils';
 import '../../utils/extenstions';
 import AppConfig from '../../config/config';
@@ -17,7 +14,7 @@ import RSSChannels from "../../data/default-channels";
 
 
 
-const RSSFeeder = ({ darkTheme }) => {
+const RSSFeeder = ({ darkTheme, channelsDB }) => {
     
     const [ isLoading, setIsLoading ] = useState(false);
     const [ url, setURL ] = useState('');
@@ -30,14 +27,9 @@ const RSSFeeder = ({ darkTheme }) => {
     const [ channels, setChannels ] = useState([]);
     const [ channelsAdded, setChannelsAdded ] = useState(false);
     const [ channelRemoved, setChannelRemoved ] = useState(false);
-    const [ searchTerm, setSearchTerm ] = useState('');
     
 
     const handleQuery = e => setURL(e.target.value.trim());
-   
-
-    const db = new LocalStorageDB(AppConfig.appName);
-    const channelsDB = new RSSChannelsCatalog(db);
 
 
     useEffect(() => {
@@ -60,7 +52,7 @@ const RSSFeeder = ({ darkTheme }) => {
         const CORS_PROXY = AppConfig.CORS_PROXY;
         const baseUrl    = CORS_PROXY + channelUrl;
         const parser     = new RSSParser();
-        
+
         parser
             .parseURL(baseUrl)
             .then(
@@ -168,7 +160,8 @@ const RSSFeeder = ({ darkTheme }) => {
             { modalVisible && 
                 <NewRSSChannelModal 
                     modalVisible={modalVisible} 
-                    visibilityHandler={setModalVisibility} 
+                    visibilityHandler={setModalVisibility}
+                    rssCatalog={channelsDB}
                     onChannelAdded={onChannelAdded} /> }
 
             { channelsModal && 
@@ -198,7 +191,8 @@ const RSSFeeder = ({ darkTheme }) => {
             }
 
             <div className="row-wrap p-3">
-                {   !isEmpty(feedItems) && 
+                {   !isEmpty(feedItems) &&
+
                     feedItems.map((item,index) => (
                     <div className="news-row__column" key={"col_" + index}>
                         <RSSFeedCard 
@@ -212,6 +206,7 @@ const RSSFeeder = ({ darkTheme }) => {
                             themeClass={darkTheme ? 'theme_dark-box' : ''}
                         />
                     </div>
+
                 ))}
             </div>
         </div>
