@@ -1,0 +1,15 @@
+{
+    "name": "herokuapp/rssfeeder2020",
+    "description": "Simple React RSS Feeder with backend on PHP",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simple Creator",
+            "email": "simple.creator@example.com"
+        }
+    ],
+	"require": {
+		"php": "^7.2.0"
+	}
+}
