@@ -1,0 +1,26 @@
+{
+  "name": "create-react-app",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "rm -rf ./.cache && rm -rf ./dist && npx parcel src/index.html",
+    "prod": "rm -rf ./.cache && rm -rf ./dist && npx parcel build src/index.html --out-dir D:\\MyDevelopingApps\\Php\\php-get-remote-url-http-headers --no-source-maps",
+    "build": "npx parcel build src/index.html --out-dir public",
+    "analyze": "source-map-explorer public/main.*"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "lodash": "^4.17.15",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.13.1",
+    "rss-parser": "^3.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.36",
+    "add": "^2.0.6",
+    "eslint": "^7.2.0",
+    "parcel-bundler": "^1.12.4",
+    "source-map-explorer": "^2.4.2",
+    "yarn": "^1.22.4"
+  }
+}

@@ -1,0 +1,49 @@
+/* Dark theme */
+:root {
+    --theme-dark-bg: #111111;
+    --theme-dark-fg: #1e1e1e;
+    --theme-dark-text-color: #d2d2d2; 
+}
+
+@media screen and (min-width: 1400px) {
+    body {
+        max-width: 1376px;
+        margin: 1px auto;
+    }
+}
+
+
+
+
+.theme_dark_2 {
+    background-color: var(--theme-dark-bg) !important;
+    color: var(--theme-dark-text-color) !important;
+}
+
+.theme_dark-box {
+    background-color: var(--theme-dark-fg) !important;
+}
+
+
+.theme_dark {
+    filter: invert(100) hue-rotate(180deg) !important; /* hue-rotate возвращает тона обратно */
+}
+
+.theme_dark  img {
+    filter: invert(100) hue-rotate(180deg);
+}
+
+
+.change-theme-btn {
+    width: 32px;
+    position: fixed;
+    z-index: 2000;
+    top: 25px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.dark-mode {
+    background: rgb(1, 10, 34);
+    color: white;
+}
